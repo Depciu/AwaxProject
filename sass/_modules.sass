@@ -1,0 +1,779 @@
+
+/* Navigation */
+
+#nav
+  max-width: 1800px
+  background-color: #000000
+
+.navbar
+  height: 80px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  .fas
+    font-size: 30px
+    color: #b88b58
+
+.hamburger-button
+  display: none
+  background-color: #000000
+  &:hover
+    background-color: #373737
+    cursor: pointer    
+
+.navbar__list
+  display: flex
+  font-weight: bold
+  line-height: 74px
+  > li
+    border-bottom: 5px solid #000000
+  > li:hover
+    border-bottom: 5px solid #b88b58
+
+.navbar__list--item
+  @include font-size(14px)
+  padding: 0 10px
+  color: #ffffff
+  text-transform: uppercase
+
+/* Hero */
+
+#hero
+  position: relative
+
+/* Carousel */
+
+.carousel__wrapper
+  position: relative
+  max-width: 1800px
+
+.carousel__inner
+  display: flex
+
+.carousel__item
+  display: flex
+  align-items: center
+  flex: 1 0 100vw
+  justify-content: center
+  padding: 50px 0 50px 0
+  width: 100vw
+  max-width: 1800px
+  overflow: scroll
+  overflow-x: hidden
+
+.first
+  background: url(../images/hero-1.png)
+  @include background-properties
+  justify-content: center
+  flex: 1 0 100vw
+
+.second
+  background: url(../images/hero-2.jpg)
+  @include background-properties
+  justify-content: center
+  flex: 1 0 100vw
+
+.third
+  background: url(../images/hero-3.jpeg)
+  @include background-properties
+  justify-content: center
+  flex: 1 0 100vw
+
+.hero__item
+  height: 450px
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+.hero__item--title
+  @include font-size(65px)
+  text-transform: uppercase
+  font-weight: 700
+  color: #ffffff
+  span
+    color: #b88b58
+
+.hero__item--text
+  padding: 3% 0 6% 0
+  @include font-size(19px)
+  text-transform: uppercase
+  font-weight: 600
+  color: #ffffff
+
+.button
+  padding: 16px 48px
+  border-radius: 30px
+  background-color: #b88b58
+  @include font-size(12px)
+  font-weight: 700
+  text-transform: uppercase
+  color: #ffffff
+  cursor: pointer
+  &:hover
+    background-color: #E5AD6E
+
+/* Bullets */
+
+.bullets__list
+  position: absolute
+  left: 50%
+  transform: translateX(-50%)
+  bottom: 5%
+  font-size: 0
+  cursor: pointer
+  
+
+.bullets__list--item
+  display: inline-block
+  height: 13px
+  width: 13px
+  margin-left: 9px
+  border-radius: 50%
+  border: 2px solid #b88b58
+  &:hover
+    background-color: #b88b58
+
+.active
+  background-color: #b88b58   
+
+/* Phone icon */
+
+.phone-icon
+  height: 70px
+  width: 70px
+  position: absolute
+  z-index: 1
+  bottom: -35px
+  right: 4%
+  cursor: pointer
+  &:hover
+    filter: brightness(115%)
+
+/* Section titles */
+
+.section__title
+  text-align: center
+  text-transform: uppercase
+
+.section__title--heading
+  @include font-size(30px)
+  font-weight: 700
+  color: #000000
+
+.section__title--text
+  @include font-size(14px)
+  padding-top: 10px
+  color: #aeaeae
+
+.white
+  color: #ffffff
+
+/* Aobut Us */
+
+#About-Us
+  @include padding50px
+  background-color: #f7f7f7
+
+
+.About-Us__content
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-top: 50px
+
+.About-Us__info
+  align-self: flex-start
+  max-width: 632px
+  padding-right: 2%
+
+.About-Us__info--text
+  padding-bottom: 5%
+  @include font-size(15px)
+  line-height: 25px
+  font-weight: 300
+  color: #242424
+
+.About-Us__video
+  width: 445px
+  height: 317px
+  background: url(../images/video.png)
+  @include background-properties
+
+/*Service*/
+
+#Service
+  @include padding50px
+  background-color: #000000
+
+.Service__content
+  display: flex
+  align-items: center
+  justify-content: center
+  padding-top: 3%
+
+.Service__item
+  border-left: 1px solid #bebebe
+  text-align: center
+  &:last-child
+    border-right: 1px solid #bebebe
+
+.Service__item--icon
+  height: 60px
+  width: 60px
+
+.Service__item--title
+  padding-top: 11%
+  @include font-size(18px)
+  text-transform: uppercase
+  line-height: 18px
+  font-weight: 700
+  color: #ffffff
+
+.Service__item--text
+  padding-top: 1%
+  @include font-size(12px)
+  line-height: 24px
+  font-weight: 300
+  color: #7e7e7e
+
+/*Project*/
+
+#Project
+  @include padding50px
+  background-color: #f7f7f7
+
+.Project-content
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+
+/*nav gallery*/
+
+.nav-gallery
+  display: flex
+  margin-top: 50px
+
+.nav-gallery__item
+  display: flex
+  align-self: center
+  border-left: 1px solid #aeaeae
+  background-color: #ededed
+  cursor: pointer
+  &:first-child
+    padding-left: 30px
+    border-left: none
+    border-radius: 42% 0 0 42%
+  &:last-child
+    padding-right: 31px
+    border-radius: 0 42% 42% 0
+
+.nav-gallery__button
+  margin: 0 5px
+  padding: 30px 30px 20px 30px
+  border-bottom: 5px solid #ededed
+  background-color: #ededed
+  &:hover
+    margin: 0 5px
+    border-bottom-color: #b88b58
+
+.active-button
+  border-bottom-color: #b88b58
+
+.gallery_button
+  display: none
+  margin-top: 50px
+  padding: 16px 48px
+  border-radius: 30px
+  background-color: #b88b58
+  font-size: 0.7058823529rem
+  font-weight: 700
+  text-transform: uppercase
+  color: #ffffff
+  cursor: pointer
+  &:hover
+    background-color: #E5AD6E
+  .fa-caret-down
+    margin-left: 5px  
+
+
+/* gallery */
+
+.gallery
+  text-align: center
+  margin-top: 25px
+  width: 100%
+
+.gallery__section 
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+  justify-content: center
+
+.gallery__title
+  width: 100%
+  padding: 3% 0 3% 0
+  text-align: center
+  @include font-size(30px)
+  font-weight: 300
+  color: #000000 
+
+.gallery__item
+  margin: 1%  
+
+.gallery__item--photo
+  position: relative
+  cursor: pointer
+  &:hover
+    .photo__layer
+      display: flex
+
+.photo__layer
+  display: none
+  position: absolute
+  top: 0
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  height: 165px
+  width: 255px
+  background-image: url(../images/colored.png)
+  @include background-properties
+  color: #ffffff
+
+.photo__layer--title
+  @include font-size(20px)
+
+.photo__layer--text
+  @include font-size(14px)
+  line-height: 23px
+  text-align: center
+  font-weight: 300
+  padding-top: 12px
+
+#gallery__button
+  margin-top: 2% 
+
+/* Our Team */  
+
+#Our-Team
+  padding-top: 50px
+  background: url(../images/bg-our-team.jpg)
+  @include background-properties
+
+.Our-Team__card
+  display: flex
+  margin: 15px
+  height: 435px
+  width: 353px
+  background: #ffffff
+  align-items: center
+
+.Our-Team__wrapper
+  width: 100%
+  text-align: center    
+
+.Our-Team__card--person
+  margin: 10% 0 4% 0
+  @include font-size(21px)
+  font-weight: 600
+  text-transform: uppercase
+  color: #242424  
+
+.Our-Team__card--person-position
+  margin: 0 0 10% 0
+  @include font-size(15px)
+  color: #242424    
+
+.social-icons__link
+  margin: 3px
+
+.fab
+  display: inline-block
+  width: 35px
+  height: 35px
+  border-radius: 50%
+  line-height: 35px
+  background-color: #bebebe
+  font-size: 15px
+  text-align: center
+  color: #ffffff
+  &:hover
+    background-color: #b88b58
+
+/* Happy Clients */
+  
+#Happy-Clients
+  padding-top: 50px
+  max-width: 1800px
+  background-color: #f7f7f7
+
+.Happy-Clients__wrapper
+  max-width: 720px
+  margin-bottom: 25px
+  text-align: center
+
+.Happy-Clients__person
+  margin: 4% 0 2% 0
+  @include font-size(24px)
+  font-weight: 700
+
+.Happy-Clients__person-position
+  margin-bottom: 4%
+  @include font-size(18px)
+  font-weight: 400
+
+.fa-quote-left
+  @include font-size(24px)
+  color: #7e7e7e
+
+.Happy-Clients__quote
+  margin: 5px 10px 0 10px
+  @include font-size(16px)
+  line-height: 25px
+  color: #7e7e7e
+
+.client-logo
+  border-top: 1px solid #cfcfcf
+  border-bottom: 1px solid #cfcfcf
+  background: #ffffff 
+
+.client-logo__wrapper
+  display: flex
+  height: 125px
+  align-items: center
+  justify-content: space-between
+
+/* Price */
+
+#Price 
+  padding-top: 50px
+  background-color: #ededed
+
+.product-card-wrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding-top: 40px
+
+
+
+.product-card
+  display: flex
+  width: 265px
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  background-color: #ffffff
+
+.product-card__title
+  padding-top: 9%
+  padding-bottom: 5%
+  @include font-size(14px)
+  text-transform: uppercase
+
+.product-card__price
+  @include font-size(27px)
+  font-weight: 700
+  color: #242424
+
+.product-card__period
+  padding-top: 1% 
+  padding-bottom: 5%
+  @include font-size(10px)
+  text-transform: uppercase
+  letter-spacing: 0.5px
+  color: #aeaeae
+
+.product-card__service
+  @include font-size(14px)
+  line-height: 13px
+  color: #7e7e7e
+
+.product-card__border
+  padding-bottom: 3%
+  @include font-size(14px)
+  line-height: 13px
+  color: #7e7e7e
+
+.product-card__button
+  margin-top: 8%
+  margin-bottom: 9%
+  padding: 15px 40px
+  border-radius: 30px
+  background-color: #373737
+  @include font-size(16px)
+  color: #ffffff
+  cursor: pointer
+  &:hover
+    background-color: #b88b58
+
+.Price-carousel
+  margin-top: 50px
+  border-top: 1px solid #cfcfcf
+  background-color: #ffffff
+
+.product-item__wrapper
+  display: flex
+  align-items: center
+  flex-direction: column
+  padding-bottom: 30px
+
+.product-item__service--wrapper
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.product-item__service--feature
+  max-width: 500px
+
+.product-feature__item
+  padding-bottom: 10px 
+  .far
+    margin-right: 9px
+    color: #b88b58
+
+.product-feature__title
+  @include font-size(21px)
+  font-weight: 700
+  padding-bottom: 9px
+
+.product-feature__text
+  margin-left: 30px
+  @include font-size(14px)
+  line-height: 21px
+  color: #5b5b5b
+
+.product-feature__list
+  margin-left: 30px    
+
+.product-feature__list--item
+  @include font-size(14px)
+  line-height: 21px
+  text-transform: uppercase
+  color: #5b5b5b
+  .fas
+    margin-right: 4px
+
+/* Some */
+
+#Some
+  @include padding50px
+  background-color: #000000
+
+.Some__content
+  display: flex
+  align-items: center
+  justify-content: center
+  padding-top: 3% 
+
+.Some__item
+  text-align: center
+
+.fa-window-minimize
+  @include font-size(18px)
+  font-weight: 700
+  color: #7e7e7e    
+
+.Some__item--number
+  font-weight: 700
+  @include font-size(42px)
+  color: #b88b58
+
+.Some__item--title
+  padding-top: 15px
+  @include font-size(18px)
+  text-transform: uppercase
+  line-height: 21px
+  font-weight: 700
+  color: #ffffff
+
+.Some__item--text
+  padding-top: 1%
+  @include font-size(12px)
+  line-height: 20px
+  font-weight: 300
+  color: #7e7e7e
+
+/* Contact Us */
+
+#Contact-Us
+  background-color: #f7f7f7  
+
+.Contact-Us__social--wrapper
+  display: flex
+  min-height: 80px
+  align-items: center
+  justify-content: center
+  border-top: 1px solid #cfcfcf
+  border-bottom: 1px solid #cfcfcf
+  background-color: #ffffff
+
+.Contact-Us__social
+  margin: 0 15px 0 15px     
+
+.Contact-Us__social--link
+  margin: 10px
+  font-weight: 700
+  color: #aeaeae  
+  .fa-twitter
+    background-color: #34c5f0
+  .fa-linkedin-in
+    background-color: #127cb4
+  .fa-facebook-f
+    background-color: #336297
+  .fa-google
+    background-color: #e74237
+  .fa-pinterest-p
+    background-color: #b71c29
+  .fab
+    margin-right: 5px   
+  .fab:hover
+    cursor: pointer  
+
+.Contact-Us__social--text
+  @include font-size(18px)
+  font-weight: 700
+  text-transform: uppercase
+  color: #aeaeae
+
+/* form */  
+
+.Contact-Us__form--wrapper
+  display: flex
+  @include padding50px
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  text-align: center
+
+
+.id 
+  margin-bottom: 50px
+
+#name 
+  margin-right: 20px  
+
+#subject, #massage 
+  width: 100%
+
+.subject
+  margin: 25px 0 50px 0      
+
+.massage
+  margin: 25px 0 50px 0  
+
+form
+  margin-top: 50px
+
+input[type=text]
+  padding-bottom: 5px
+  border-bottom: 2px solid #a4a4a4
+  background-color: inherit
+  color: #757575
+  &::placeholder
+    text-transform: uppercase
+  &:focus
+    color: #757575
+    outline: 0
+    text-transform: lowercase
+    &::placeholder
+      text-transform: uppercase
+
+/* Map */  
+
+.Contact-Us__map--wrapper
+  display: flex
+  align-items: center
+  height: 400px
+  background: url(../images/Contat-Us/map.png)
+  @include background-properties
+
+.Contact-Us__map--card
+  display: flex
+  justify-content: center
+  flex-direction: column
+  height: 300px
+  max-width: 500px
+  background-color: #ffffff
+  .fas, .far
+    width: 35px
+    height: 35px
+    margin-right: 10px
+    border-radius: 50%
+    line-height: 35px
+    background-color: #bebebe
+    font-size: 15px
+    text-align: center
+    color: #ffffff
+
+.Contact-Us__card--text
+  margin-left: 10%
+  margin-bottom: 15px
+  line-height: 21px
+  @include font-size(13px)
+  color: #7e7e7e
+
+/* Footer */
+
+footer
+  position: relative
+  background-color: #000000
+
+.scrool-up-icon
+  position: absolute
+  height: 70px
+  width: 70px
+  top: -35px
+  right: 4%
+  z-index: 1
+  cursor: pointer
+  &:hover
+    filter: brightness(115%)  
+
+.footer--wrapper
+  display: flex
+  justify-content: space-between
+  padding: 25px 0 25px 0
+
+.footer-item
+  display: flex
+  justify-content: space-between
+  flex-direction: column
+  min-height: 200px
+  max-width: 350px
+  margin: 10px
+  width: 100%
+  .fab
+    margin: 2px
+    background-color: #373737
+    &:hover
+      background-color: #b88b58
+
+.footer-text
+  @include font-size(14px)
+  line-height: 20px
+  color: #7e7e7e
+
+.footer__contact--wrapper
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-direction: column
+  height: 100%
+  background-color: #373737
+  text-align: center
+  form 
+    margin-top: 0
+  input[type=text]
+    text-align: center  
+
+.copyright
+  align-items: flex-end
+  @include font-size(14px)
+  text-transform: uppercase
+  color: #ffffff
+
+.subcribe
+  margin-bottom: 20px  

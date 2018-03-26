@@ -1,0 +1,16 @@
+$base-font-size: 17px
+
+@function calculateRem($size)
+  $remSize: $size / $base-font-size
+  @return $remSize * 1rem
+
+@mixin font-size($size)
+  font-size: calculateRem($size)
+
+@mixin background-properties
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+@mixin padding50px
+  padding: 50px 0 50px 0

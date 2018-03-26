@@ -1,0 +1,40 @@
+{
+  "name": "Awax",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:html",
+    "test:html": "glob-run nu-html-checker *.html",
+    "build": "npm run build:sass && npm run build:autoprefixer && npm run test",
+    "build:sass": "sass --sourcemap=none --update sass:css",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "update:sassprefixer": "npm run build:sass && npm run build:autoprefixer",
+    "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browser-sync\" \"npm run watch:babel-cli\" ",
+    "watch:sassprefixer": "glob-run onchange sass -- npm run update:sassprefixer",
+    "watch:browser-sync": "glob-run browser-sync start --server --files css/style.css  index.html javascript-compailed/carousel.js javascript-compailed/hamburger.",
+    "watch:babel-cli": "babel ./javascript -d ./javascript-compailed -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Depciu/Awax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Depciu/Awax/issues"
+  },
+  "homepage": "https://github.com/Depciu/Awax#readme",
+  "dependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "browser-sync": "^2.18.13",
+    "glob-run": "^0.1.6",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^3.2.1",
+    "parallelshell": "^3.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1"
+  }
+}
