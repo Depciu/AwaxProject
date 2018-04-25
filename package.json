@@ -12,7 +12,7 @@
     "update:sassprefixer": "npm run build:sass && npm run build:autoprefixer",
     "watch": "parallelshell \"npm run watch:sassprefixer\" \"npm run watch:browser-sync\" \"npm run watch:babel-cli\" ",
     "watch:sassprefixer": "glob-run onchange sass -- npm run update:sassprefixer",
-    "watch:browser-sync": "glob-run browser-sync start --server --files css/style.css  index.html javascript-compailed/carousel.js javascript-compailed/hamburger.",
+    "watch:browser-sync": "glob-run browser-sync start --server --files css/style.css  index.html javascript-compailed/*.js",
     "watch:babel-cli": "babel ./javascript -d ./javascript-compailed -w"
   },
   "repository": {

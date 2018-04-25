@@ -1,1 +1,1 @@
-console.log('carousel.jsx');
+console.log('carousel.js');
