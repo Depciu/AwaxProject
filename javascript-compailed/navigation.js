@@ -1,9 +1,19 @@
-'use strict';
+"use strict";
 
-// remove jump 
+var navLinks = document.getElementsByClassName("navbar__list--item");
+console.log(navLinks);
 
-if (history.pushState) {
-	history.pushState(null, null, '#hero');
-} else {
-	location.hash = '#hero';
+/*Create array*/
+var arrNavLinks = [].slice.call(navLinks);
+
+function srcollTo() {
+	console.log('jest ok');
 }
+
+/*Create Events*/
+arrNavLinks.forEach(function (element) {
+	element.addEventListener("click", function (e) {
+		e.preventDefault();
+		srcollTo();
+	}, false);
+});
