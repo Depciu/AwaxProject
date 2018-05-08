@@ -1,37 +1,27 @@
+
+window.location.hash = "#Awax";
 const navLinks = document.getElementsByClassName("navbar__list--item");
-console.log(navLinks);
+
 
 /*Create array link*/
 const arrNavLinks = [].slice.call(navLinks);
 
-/*Get off setTop sections*/
+/*Get offsetTop sections*/
 
 const sections = document.getElementsByTagName('section');
 const arrSections = [].slice.call(sections).slice(1);
+console.log(arrSections);
 
-/*Get offsetTop sections*/
+/* add events */
 
-function getOffSetTop (arr) {
-
-	let offSetPositions = [];
-
-	for (let i = 0; i < arr.length; i++) {
-		offSetPositions.push(arr[i].offsetTop);	 
+for (let j = 0; j < arrNavLinks.length; j++) {
+		arrNavLinks[j].addEventListener("click", function(e) {
+			e.preventDefault();
+			smoothScroll(window.pageYOffset, arrSections[j].offsetTop);
+			console.log(arrSections[j].offsetTop);
+		}, false);		
 	}
 
-	return offSetPositions;
+function smoothScroll(winYOffset, secYOffSet) {
+	console.log(winYOffset, secYOffSet);
 }
-
-const arrOfSetTopSections = getOffSetTop(arrSections);
-
-/*On click event*/
-function srcollTo(event) {
-	console.log(event);
-}
-
-arrNavLinks.forEach(element => {
-	element.addEventListener("click", function(e) {
-		e.preventDefault();
-		srcollTo(e);
-	}, false)
-});
