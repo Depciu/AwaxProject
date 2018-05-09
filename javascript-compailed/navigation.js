@@ -1,31 +1,72 @@
 "use strict";
 
-window.location.hash = "#Awax";
+/* add events */
+
+/*nav events */
+
 var navLinks = document.getElementsByClassName("navbar__list--item");
 
 /*Create array link*/
+
 var arrNavLinks = [].slice.call(navLinks);
 
 /*Get offsetTop sections*/
 
-var sections = document.getElementsByTagName('section');
+var sections = document.getElementsByTagName("section");
 var arrSections = [].slice.call(sections).slice(1);
-console.log(arrSections);
 
-/* add events */
-
-var _loop = function _loop(j) {
-	arrNavLinks[j].addEventListener("click", function (e) {
+var _loop = function _loop(i) {
+	arrNavLinks[i].addEventListener("click", function (e) {
 		e.preventDefault();
-		smoothScroll(window.pageYOffset, arrSections[j].offsetTop);
-		console.log(arrSections[j].offsetTop);
+		updateLocHash(arrSections[i].id);
+		smoothScroll(window.pageYOffset, arrSections[i].offsetTop);
 	}, false);
 };
 
-for (var j = 0; j < arrNavLinks.length; j++) {
-	_loop(j);
+for (var i = 0; i < arrNavLinks.length; i++) {
+	_loop(i);
 }
 
+/*scroll up event */
+
+/*Get link to scroll up */
+
+var linkScroollup = document.getElementsByClassName("scrool-up-icon");
+
+linkScroollup[0].addEventListener("click", function (e) {
+	e.preventDefault();
+	updateLocHash(arrSections[0].id);
+	smoothScroll(window.pageYOffset, arrSections[0].offsetTop);
+}, false);
+
+/* smoothScroll */
+
 function smoothScroll(winYOffset, secYOffSet) {
-	console.log(winYOffset, secYOffSet);
+
+	var i = winYOffset;
+	var h = secYOffSet - 70;
+
+	var init = setInterval(function () {
+
+		if (i < h) {
+			window.scrollTo(0, i);
+			i += 10;
+			if (i >= h + 80) {
+				clearInterval(init);
+			}
+		} else if (i > h) {
+			window.scrollTo(0, i);
+			i -= 10;
+			if (i <= h) {
+				clearInterval(init);
+			}
+		}
+	}, 5);
+}
+
+/* update window location hash */
+function updateLocHash(location) {
+	if (history.pushState) {
+		history.pushState(null, null, "#" + location);
+	}
 }
