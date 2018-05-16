@@ -113,10 +113,12 @@ section, footer {
   display: flex;
   font-weight: bold;
   line-height: 74px; }
+  .navbar__list > .active {
+    border-bottom: 5px solid #b88b58; }
   .navbar__list > li {
     border-bottom: 5px solid #000000; }
-  .navbar__list > li:hover {
-    border-bottom: 5px solid #b88b58; }
+    .navbar__list > li:hover {
+      border-bottom: 5px solid #b88b58; }
 
 .navbar__list--item {
   font-size: 0.8235294118rem;
@@ -245,6 +247,8 @@ section, footer {
   bottom: 5%;
   font-size: 0;
   cursor: pointer; }
+  .bullets__list > .active {
+    background-color: #b88b58; }
 
 .bullets__list--item {
   display: inline-block;
@@ -255,9 +259,6 @@ section, footer {
   border: 2px solid #b88b58; }
   .bullets__list--item:hover {
     background-color: #b88b58; }
-
-.active {
-  background-color: #b88b58; }
 
 /* Phone icon */
 .phone-icon {

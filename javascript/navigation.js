@@ -5,8 +5,13 @@
 
 const navLinks = document.getElementsByClassName("navbar__list--item");
 
+/*Get all li*/
 
-/*Create array link*/
+const navLi = document.querySelectorAll(".navbar__list > li");
+console.log(navLi);
+
+
+/*Get links*/
 
 const arrNavLinks = [].slice.call(navLinks);
 
@@ -22,6 +27,12 @@ for (let i = 0; i < arrNavLinks.length; i++) {
 		smoothScroll(window.pageYOffset, arrSections[i].offsetTop);	
 	}, false);	
 }
+
+/* add scroll position event */
+
+window.addEventListener("scroll", function() {
+	scrollpos();
+}, false);
 
 /*scroll up event */
 
@@ -39,26 +50,50 @@ linkScroollup[0].addEventListener("click", function(e){
 
 function smoothScroll(winYOffset, secYOffSet) {
 	
-	let i = winYOffset;
+	let j = winYOffset;
 	let h = secYOffSet - 70;
 
 	const init = setInterval(() => {
 
-		if (i < h) {
-		window.scrollTo(0, i);
-		i += 10;
-			if (i >= h + 80) {
+		if (j < h) {
+		window.scrollTo(0, j);
+		j += 10;
+			if (j >= h + 80) {
 				clearInterval(init);
 			}
-		} else if ( i > h) {
-		window.scrollTo(0, i);
-		i -= 10;
-			if ( i <= h) {	
+		} else if ( j > h) {
+		window.scrollTo(0, j);
+		j -= 10;
+			if ( j <= h) {	
 				clearInterval(init);	
 			}
 		}	
 
 	}, 5);	
+}
+
+/* add and remove class = active in to navigation */
+
+function scrollpos() {
+	arrSections.forEach((item, index) => {
+
+		let previousIndex = index - 1;
+
+		if (previousIndex  == -1) {
+			previousIndex  = 0;
+		} else {
+			previousIndex = index - 1;
+		}
+
+
+		if (item.offsetTop - 100 <= window.pageYOffset) {
+			navLi[previousIndex].removeAttribute('class', '');
+			navLi[index].setAttribute('class', 'active');
+		} else {
+			navLi[index].setAttribute('class', '');
+		}
+
+	});
 }
 
 /* update window location hash */

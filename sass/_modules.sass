@@ -28,16 +28,20 @@
   display: flex
   font-weight: bold
   line-height: 74px
+  > .active
+    border-bottom: 5px solid #b88b58
   > li
     border-bottom: 5px solid #000000
-  > li:hover
-    border-bottom: 5px solid #b88b58
+    &:hover
+      border-bottom: 5px solid #b88b58
+
 
 .navbar__list--item
   @include font-size(14px)
   padding: 0 10px
   color: #ffffff
   text-transform: uppercase
+
 
 /* Hero */
 
@@ -125,6 +129,8 @@
   bottom: 5%
   font-size: 0
   cursor: pointer
+  > .active
+    background-color: #b88b58  
   
 
 .bullets__list--item
@@ -135,10 +141,7 @@
   border-radius: 50%
   border: 2px solid #b88b58
   &:hover
-    background-color: #b88b58
-
-.active
-  background-color: #b88b58   
+    background-color: #b88b58 
 
 /* Phone icon */
 

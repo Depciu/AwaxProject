@@ -6,7 +6,12 @@
 
 var navLinks = document.getElementsByClassName("navbar__list--item");
 
-/*Create array link*/
+/*Get all li*/
+
+var navLi = document.querySelectorAll(".navbar__list > li");
+console.log(navLi);
+
+/*Get links*/
 
 var arrNavLinks = [].slice.call(navLinks);
 
@@ -27,6 +32,12 @@ for (var i = 0; i < arrNavLinks.length; i++) {
 	_loop(i);
 }
 
+/* add scroll position event */
+
+window.addEventListener("scroll", function () {
+	scrollpos();
+}, false);
+
 /*scroll up event */
 
 /*Get link to scroll up */
@@ -43,25 +54,47 @@ linkScroollup[0].addEventListener("click", function (e) {
 
 function smoothScroll(winYOffset, secYOffSet) {
 
-	var i = winYOffset;
+	var j = winYOffset;
 	var h = secYOffSet - 70;
 
 	var init = setInterval(function () {
 
-		if (i < h) {
-			window.scrollTo(0, i);
-			i += 10;
-			if (i >= h + 80) {
+		if (j < h) {
+			window.scrollTo(0, j);
+			j += 10;
+			if (j >= h + 80) {
 				clearInterval(init);
 			}
-		} else if (i > h) {
-			window.scrollTo(0, i);
-			i -= 10;
-			if (i <= h) {
+		} else if (j > h) {
+			window.scrollTo(0, j);
+			j -= 10;
+			if (j <= h) {
 				clearInterval(init);
 			}
 		}
 	}, 5);
+}
+
+/* add and remove class = active in to navigation */
+
+function scrollpos() {
+	arrSections.forEach(function (item, index) {
+
+		var previousIndex = index - 1;
+
+		if (previousIndex == -1) {
+			previousIndex = 0;
+		} else {
+			previousIndex = index - 1;
+		}
+
+		if (item.offsetTop - 100 <= window.pageYOffset) {
+			navLi[previousIndex].removeAttribute('class', '');
+			navLi[index].setAttribute('class', 'active');
+		} else {
+			navLi[index].setAttribute('class', '');
+		}
+	});
 }
 
 /* update window location hash */
