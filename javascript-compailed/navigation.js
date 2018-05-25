@@ -9,7 +9,6 @@ var navLinks = document.getElementsByClassName("navbar__list--item");
 /*Get all li*/
 
 var navLi = document.querySelectorAll(".navbar__list > li");
-console.log(navLi);
 
 /*Get links*/
 
@@ -75,7 +74,7 @@ function smoothScroll(winYOffset, secYOffSet) {
 	}, 5);
 }
 
-/* add and remove class = active in to navigation */
+/* add and remove class = active in navigation */
 
 function scrollpos() {
 	arrSections.forEach(function (item, index) {
