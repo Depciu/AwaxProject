@@ -20,21 +20,24 @@ var sections = document.getElementsByTagName("section");
 var arrSections = [].slice.call(sections).slice(1);
 
 var _loop = function _loop(i) {
-	arrNavLinks[i].addEventListener("click", function (e) {
-		e.preventDefault();
-		updateLocHash(arrSections[i].id);
-		smoothScroll(window.pageYOffset, arrSections[i].offsetTop);
-	}, false);
+  arrNavLinks[i].addEventListener("click", function (e) {
+    e.preventDefault();
+    console.log(e.detail);
+    if (e.detail < 2) {
+      updateLocHash(arrSections[i].id);
+      smoothScroll(window.pageYOffset, arrSections[i].offsetTop);
+    }
+  }, false);
 };
 
 for (var i = 0; i < arrNavLinks.length; i++) {
-	_loop(i);
+  _loop(i);
 }
 
 /* add scroll position event */
 
 window.addEventListener("scroll", function () {
-	scrollpos();
+  scrollpos();
 }, false);
 
 /*scroll up event */
@@ -44,61 +47,60 @@ window.addEventListener("scroll", function () {
 var linkScroollup = document.getElementsByClassName("scrool-up-icon");
 
 linkScroollup[0].addEventListener("click", function (e) {
-	e.preventDefault();
-	updateLocHash(arrSections[0].id);
-	smoothScroll(window.pageYOffset, arrSections[0].offsetTop);
+  e.preventDefault();
+  if (e.detail < 2) {
+    updateLocHash(arrSections[0].id);
+    smoothScroll(window.pageYOffset, arrSections[0].offsetTop);
+  }
 }, false);
 
 /* smoothScroll */
 
 function smoothScroll(winYOffset, secYOffSet) {
+  var j = winYOffset;
+  var h = secYOffSet - 70;
 
-	var j = winYOffset;
-	var h = secYOffSet - 70;
-
-	var init = setInterval(function () {
-
-		if (j < h) {
-			window.scrollTo(0, j);
-			j += 10;
-			if (j >= h + 80) {
-				clearInterval(init);
-			}
-		} else if (j > h) {
-			window.scrollTo(0, j);
-			j -= 10;
-			if (j <= h) {
-				clearInterval(init);
-			}
-		}
-	}, 5);
+  var init = setInterval(function () {
+    if (j < h) {
+      window.scrollTo(0, j);
+      j += 10;
+      if (j >= h + 80) {
+        clearInterval(init);
+      }
+    } else if (j > h) {
+      window.scrollTo(0, j);
+      j -= 10;
+      if (j <= h) {
+        clearInterval(init);
+      }
+    }
+  }, 5);
 }
 
 /* add and remove class = active in navigation */
 
 function scrollpos() {
-	arrSections.forEach(function (item, index) {
+  arrSections.forEach(function (item, index) {
+    var previousIndex = index - 1;
 
-		var previousIndex = index - 1;
+    if (previousIndex == -1) {
+      previousIndex = 0;
+    } else {
+      previousIndex = index - 1;
+    }
 
-		if (previousIndex == -1) {
-			previousIndex = 0;
-		} else {
-			previousIndex = index - 1;
-		}
-
-		if (item.offsetTop - 100 <= window.pageYOffset) {
-			navLi[previousIndex].removeAttribute('class', '');
-			navLi[index].setAttribute('class', 'active');
-		} else {
-			navLi[index].setAttribute('class', '');
-		}
-	});
+    if (item.offsetTop - 100 <= window.pageYOffset) {
+      navLi[previousIndex].removeAttribute("class", "");
+      navLi[index].setAttribute("class", "active");
+    } else {
+      navLi[index].setAttribute("class", "");
+    }
+  });
 }
 
 /* update window location hash */
 function updateLocHash(location) {
-	if (history.pushState) {
-		history.pushState(null, null, "#" + location);
-	}
+  if (history.pushState) {
+    history.pushState(null, null, "#" + location);
+  }
 }
