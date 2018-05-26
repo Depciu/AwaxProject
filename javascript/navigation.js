@@ -4,13 +4,14 @@
 
 const navLinks = document.getElementsByClassName("navbar__list--item");
 
-/*Get all li*/
-
-const navLi = document.querySelectorAll(".navbar__list > li");
-
 /*Get links*/
 
 const arrNavLinks = [].slice.call(navLinks);
+
+
+/*Get all li*/
+
+const navLi = document.querySelectorAll(".navbar__list > li");
 
 /*Get offsetTop sections*/
 
@@ -22,10 +23,10 @@ for (let i = 0; i < arrNavLinks.length; i++) {
     "click",
     function(e) {
       e.preventDefault();
-      console.log(e.detail);
+      const navHeightClick = document.getElementById('nav').clientHeight;
       if (e.detail < 2) {
         updateLocHash(arrSections[i].id);
-        smoothScroll(window.pageYOffset, arrSections[i].offsetTop);
+        smoothScroll(window.pageYOffset, arrSections[i].offsetTop, navHeightClick);
       }
     },
     false
@@ -37,7 +38,8 @@ for (let i = 0; i < arrNavLinks.length; i++) {
 window.addEventListener(
   "scroll",
   function() {
-    scrollpos();
+    const navHeightScroll = document.getElementById('nav').clientHeight;
+    scrollpos(navHeightScroll);
   },
   false
 );
@@ -46,15 +48,16 @@ window.addEventListener(
 
 /*Get link to scroll up */
 
-const linkScroollup = document.getElementsByClassName("scrool-up-icon");
+const linkScroollup = document.getElementById("scorll-to-top");
 
-linkScroollup[0].addEventListener(
+linkScroollup.addEventListener(
   "click",
   function(e) {
     e.preventDefault();
+    const navHeightScrollUp = document.getElementById("nav").clientHeight;
     if (e.detail < 2) {
       updateLocHash(arrSections[0].id);
-      smoothScroll(window.pageYOffset, arrSections[0].offsetTop);
+      smoothScroll(window.pageYOffset, arrSections[0].offsetTop, navHeightScrollUp);
     }
   },
   false
@@ -62,15 +65,17 @@ linkScroollup[0].addEventListener(
 
 /* smoothScroll */
 
-function smoothScroll(winYOffset, secYOffSet) {
+
+function smoothScroll(winYOffset, secYOffSet, navHeight) {
+
   let j = winYOffset;
-  let h = secYOffSet - 70;
+  let h = secYOffSet - navHeight;
 
   const init = setInterval(() => {
     if (j < h) {
       window.scrollTo(0, j);
       j += 10;
-      if (j >= h + 80) {
+      if (j >= h + navHeight) {
         clearInterval(init);
       }
     } else if (j > h) {
@@ -83,9 +88,9 @@ function smoothScroll(winYOffset, secYOffSet) {
   }, 5);
 }
 
-/* add and remove class = active in navigation */
+/* add and remove class  active in navigation */
 
-function scrollpos() {
+function scrollpos(navHeightScroll) {
   arrSections.forEach((item, index) => {
     let previousIndex = index - 1;
 
@@ -95,7 +100,7 @@ function scrollpos() {
       previousIndex = index - 1;
     }
 
-    if (item.offsetTop - 100 <= window.pageYOffset) {
+    if (item.offsetTop - navHeightScroll  <= window.pageYOffset + 10) {
       navLi[previousIndex].removeAttribute("class", "");
       navLi[index].setAttribute("class", "active");
     } else {
@@ -105,8 +110,27 @@ function scrollpos() {
 }
 
 /* update window location hash */
+
 function updateLocHash(location) {
   if (history.pushState) {
     history.pushState(null, null, `#${location}`);
   }
 }
+
+/* Hamburger menu */
+
+const hamButton = document.getElementById('hamButton');
+const exitButton = document.getElementById('exitButton');
+const arrButtons = [hamButton, exitButton];
+const navMenu = document.getElementById('navMenu');
+
+
+/* add events */
+
+arrButtons.forEach((item, index) => {
+  item.addEventListener("click", function(e){
+    
+    navMenu.style.display = "block";
+    
+  }, false)
+})

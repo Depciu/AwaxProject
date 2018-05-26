@@ -107,6 +107,13 @@ section, footer {
     background-color: #373737;
     cursor: pointer; }
 
+.exit-button {
+  display: none;
+  background-color: #000000; }
+  .exit-button:hover {
+    background-color: #373737;
+    cursor: pointer; }
+
 .navbar__list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1198,7 +1205,10 @@ footer {
   .hamburger-button {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; } }
+    display: flex; }
+
+  .exit-button {
+    display: none; } }
 @media (max-width: 1138px) {
   .product-card-wrapper {
     -ms-flex-wrap: wrap;
