@@ -8,7 +8,6 @@ const navLinks = document.getElementsByClassName("navbar__list--item");
 
 const arrNavLinks = [].slice.call(navLinks);
 
-
 /*Get all li*/
 
 const navLi = document.querySelectorAll(".navbar__list > li");
@@ -23,10 +22,14 @@ for (let i = 0; i < arrNavLinks.length; i++) {
     "click",
     function(e) {
       e.preventDefault();
-      const navHeightClick = document.getElementById('nav').clientHeight;
+      const navHeightClick = document.getElementById("nav").clientHeight;
       if (e.detail < 2) {
         updateLocHash(arrSections[i].id);
-        smoothScroll(window.pageYOffset, arrSections[i].offsetTop, navHeightClick);
+        smoothScroll(
+          window.pageYOffset,
+          arrSections[i].offsetTop,
+          navHeightClick
+        );
       }
     },
     false
@@ -38,7 +41,7 @@ for (let i = 0; i < arrNavLinks.length; i++) {
 window.addEventListener(
   "scroll",
   function() {
-    const navHeightScroll = document.getElementById('nav').clientHeight;
+    const navHeightScroll = document.getElementById("nav").clientHeight;
     scrollpos(navHeightScroll);
   },
   false
@@ -57,7 +60,11 @@ linkScroollup.addEventListener(
     const navHeightScrollUp = document.getElementById("nav").clientHeight;
     if (e.detail < 2) {
       updateLocHash(arrSections[0].id);
-      smoothScroll(window.pageYOffset, arrSections[0].offsetTop, navHeightScrollUp);
+      smoothScroll(
+        window.pageYOffset,
+        arrSections[0].offsetTop,
+        navHeightScrollUp
+      );
     }
   },
   false
@@ -65,9 +72,7 @@ linkScroollup.addEventListener(
 
 /* smoothScroll */
 
-
 function smoothScroll(winYOffset, secYOffSet, navHeight) {
-
   let j = winYOffset;
   let h = secYOffSet - navHeight;
 
@@ -100,7 +105,7 @@ function scrollpos(navHeightScroll) {
       previousIndex = index - 1;
     }
 
-    if (item.offsetTop - navHeightScroll  <= window.pageYOffset + 10) {
+    if (item.offsetTop - navHeightScroll <= window.pageYOffset + 10) {
       navLi[previousIndex].removeAttribute("class", "");
       navLi[index].setAttribute("class", "active");
     } else {
@@ -119,18 +124,52 @@ function updateLocHash(location) {
 
 /* Hamburger menu */
 
-const hamButton = document.getElementById('hamButton');
-const exitButton = document.getElementById('exitButton');
-const arrButtons = [hamButton, exitButton];
-const navMenu = document.getElementById('navMenu');
+const hamButton = document.getElementById("hamButton");
+const exitButton = document.getElementById("exitButton");
+const navMenu = document.getElementById("navMenu");
+const navLogo = document.getElementById("navbar-logo");
 
 
 /* add events */
 
-arrButtons.forEach((item, index) => {
-  item.addEventListener("click", function(e){
-    
-    navMenu.style.display = "block";
-    
-  }, false)
-})
+window.addEventListener(
+  "resize",
+  function(e) {
+    if (window.innerWidth >= 997) {
+      navMenu.style.display = "";
+      hamButton.style.display = "";
+      exitButton.style.display = "";
+    }
+  },
+  false
+);
+
+hamButton.addEventListener(
+  "click",
+  function(e) {
+    if (window.innerWidth <= 997) {
+      navMenu.style.display = "flex";
+      hamButton.style.display = "none";
+      exitButton.style.display = "flex";
+      navLogo.style.display = "flex";
+      navLogo.style.alignSelf = "self-start";
+      navLogo.style.marginTop = "13px";
+    }
+  },
+  false
+);
+
+exitButton.addEventListener(
+  "click",
+  function(e) {
+    if (window.innerWidth <= 997) {
+      navMenu.style.display = "none";
+      hamButton.style.display = "flex";
+      exitButton.style.display = "none";
+      navLogo.style.display = "block";
+      navLogo.style.alignSelf = "";
+      navLogo.style.marginTop = "";
+    }
+  },
+  false
+);

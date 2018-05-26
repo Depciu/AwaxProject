@@ -1185,7 +1185,12 @@ footer {
             justify-content: center;
     padding-bottom: 15px; } }
 @media (max-width: 997px) {
+  #nav {
+    opacity: 0.9; }
+
   .navbar {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
     height: auto;
     min-height: 80px;
     -webkit-box-align: center;
@@ -1200,7 +1205,7 @@ footer {
             flex-direction: column;
     text-align: center;
     line-height: 21px;
-    margin: 50px auto 10px auto; }
+    margin: 15px auto 10px auto; }
 
   .hamburger-button {
     display: -webkit-box;
@@ -1208,7 +1213,10 @@ footer {
     display: flex; }
 
   .exit-button {
-    display: none; } }
+    display: none;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    margin-top: 24px; } }
 @media (max-width: 1138px) {
   .product-card-wrapper {
     -ms-flex-wrap: wrap;

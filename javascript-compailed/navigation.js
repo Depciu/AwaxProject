@@ -22,7 +22,7 @@ var arrSections = [].slice.call(sections).slice(1);
 var _loop = function _loop(i) {
   arrNavLinks[i].addEventListener("click", function (e) {
     e.preventDefault();
-    var navHeightClick = document.getElementById('nav').clientHeight;
+    var navHeightClick = document.getElementById("nav").clientHeight;
     if (e.detail < 2) {
       updateLocHash(arrSections[i].id);
       smoothScroll(window.pageYOffset, arrSections[i].offsetTop, navHeightClick);
@@ -37,7 +37,7 @@ for (var i = 0; i < arrNavLinks.length; i++) {
 /* add scroll position event */
 
 window.addEventListener("scroll", function () {
-  var navHeightScroll = document.getElementById('nav').clientHeight;
+  var navHeightScroll = document.getElementById("nav").clientHeight;
   scrollpos(navHeightScroll);
 }, false);
 
@@ -59,7 +59,6 @@ linkScroollup.addEventListener("click", function (e) {
 /* smoothScroll */
 
 function smoothScroll(winYOffset, secYOffSet, navHeight) {
-
   var j = winYOffset;
   var h = secYOffSet - navHeight;
 
@@ -111,16 +110,39 @@ function updateLocHash(location) {
 
 /* Hamburger menu */
 
-var hamButton = document.getElementById('hamButton');
-var exitButton = document.getElementById('exitButton');
-var arrButtons = [hamButton, exitButton];
-var navMenu = document.getElementById('navMenu');
+var hamButton = document.getElementById("hamButton");
+var exitButton = document.getElementById("exitButton");
+var navMenu = document.getElementById("navMenu");
+var navLogo = document.getElementById("navbar-logo");
 
 /* add events */
 
-arrButtons.forEach(function (item, index) {
-  item.addEventListener("click", function (e) {
+window.addEventListener("resize", function (e) {
+  if (window.innerWidth >= 997) {
+    navMenu.style.display = "";
+    hamButton.style.display = "";
+    exitButton.style.display = "";
+  }
+}, false);
 
-    navMenu.style.display = "block";
-  }, false);
-});
+hamButton.addEventListener("click", function (e) {
+  if (window.innerWidth <= 997) {
+    navMenu.style.display = "flex";
+    hamButton.style.display = "none";
+    exitButton.style.display = "flex";
+    navLogo.style.display = "flex";
+    navLogo.style.alignSelf = "self-start";
+    navLogo.style.marginTop = "13px";
+  }
+}, false);
+
+exitButton.addEventListener("click", function (e) {
+  if (window.innerWidth <= 997) {
+    navMenu.style.display = "none";
+    hamButton.style.display = "flex";
+    exitButton.style.display = "none";
+    navLogo.style.display = "block";
+    navLogo.style.alignSelf = "";
+    navLogo.style.marginTop = "";
+  }
+}, false);
