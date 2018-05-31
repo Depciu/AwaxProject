@@ -1,29 +1,31 @@
 /* Get gallery buttons */
 
 const galleryBtn = document.getElementsByClassName("nav-gallery__button");
-const galleryBtnAll = galleryBtn[0];
+const galleryBtnAll = [].slice.call(galleryBtn).slice(0,1);
 const arrGalleryBtn = [].slice.call(galleryBtn).slice(1);
-const arrAllGalleryBtn = arrGalleryBtn.concat(galleryBtnAll);
+const arrAllGalleryBtn = galleryBtnAll.concat(arrGalleryBtn);
 
-/*Get gallery sections */
-
-const gallerySec = document.getElementsByClassName("gallery__section");
-const arrGallerySec = [].slice.call(gallerySec);
 
 /*add click event */
 
-arrAllGalleryBtn.forEach((btn, btnGalleryIndex) => {
+arrGalleryBtn.forEach((btn, btnGalleryIndex) => {
     btn.addEventListener("click", function(e) {
-				unActiveGalleryBtn()    
-        activeGalleryBtn(btn);
+				unActiveGalleryBtn();    
+				activeGalleryBtn(e.target);
+				showActiveGallery(btnGalleryIndex);
     }, false);
 });
 
+galleryBtnAll[0].addEventListener("click", function(e){
+	unActiveGalleryBtn();
+	activeGalleryBtn(e.target);
+},false);
+
+
 /* add and remove class  active in gallery navigation */
 
-function activeGalleryBtn(btn) {
+function activeGalleryBtn(btn, btnGalleryIndex) {
 	btn.setAttribute("class", "nav-gallery__button active-button");
-	console.log(btn);
 }
 
 function unActiveGalleryBtn() {
@@ -32,4 +34,13 @@ function unActiveGalleryBtn() {
 	})
 }
 
-//console.log(allGalleryBtn);
+/*Get gallery sections */
+
+const gallerySec = document.getElementsByClassName("gallery__section");
+const arrGallerySec = [].slice.call(gallerySec);
+
+/* Show active gallery section */
+
+function showActiveGallery(btnGalleryIndex) {
+	console.log(arrGallerySec[btnGalleryIndex]);
+}

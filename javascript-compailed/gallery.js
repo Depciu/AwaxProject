@@ -3,29 +3,29 @@
 /* Get gallery buttons */
 
 var galleryBtn = document.getElementsByClassName("nav-gallery__button");
-var galleryBtnAll = galleryBtn[0];
+var galleryBtnAll = [].slice.call(galleryBtn).slice(0, 1);
 var arrGalleryBtn = [].slice.call(galleryBtn).slice(1);
-var arrAllGalleryBtn = arrGalleryBtn.concat(galleryBtnAll);
-
-/*Get gallery sections */
-
-var gallerySec = document.getElementsByClassName("gallery__section");
-var arrGallerySec = [].slice.call(gallerySec);
+var arrAllGalleryBtn = galleryBtnAll.concat(arrGalleryBtn);
 
 /*add click event */
 
-arrAllGalleryBtn.forEach(function (btn, btnGalleryIndex) {
+arrGalleryBtn.forEach(function (btn, btnGalleryIndex) {
 	btn.addEventListener("click", function (e) {
 		unActiveGalleryBtn();
-		activeGalleryBtn(btn);
+		activeGalleryBtn(e.target);
+		showActiveGallery(btnGalleryIndex);
 	}, false);
 });
 
+galleryBtnAll[0].addEventListener("click", function (e) {
+	unActiveGalleryBtn();
+	activeGalleryBtn(e.target);
+}, false);
+
 /* add and remove class  active in gallery navigation */
 
-function activeGalleryBtn(btn) {
+function activeGalleryBtn(btn, btnGalleryIndex) {
 	btn.setAttribute("class", "nav-gallery__button active-button");
-	console.log(btn);
 }
 
 function unActiveGalleryBtn() {
@@ -34,4 +34,13 @@ function unActiveGalleryBtn() {
 	});
 }
 
-//console.log(allGalleryBtn);
+/*Get gallery sections */
+
+var gallerySec = document.getElementsByClassName("gallery__section");
+var arrGallerySec = [].slice.call(gallerySec);
+
+/* Show active gallery section */
+
+function showActiveGallery(btnGalleryIndex) {
+	console.log(arrGallerySec[btnGalleryIndex]);
+}
