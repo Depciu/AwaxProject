@@ -38,6 +38,7 @@ galleryBtnAll[0].addEventListener(
 window.addEventListener("load", function(e) {
   unActiveGallerySec();
   showActiveGallerySec([0]);
+  rewindGalleryBtn.setAttribute("style", "display:none;");
 });
 
 /* add and remove class  active in gallery navigation */
@@ -56,10 +57,6 @@ function unActiveGalleryBtn() {
 
 const gallerySec = document.getElementsByClassName("gallery__section");
 const arrGallerySec = [].slice.call(gallerySec);
-
-/* Get more project button */
-
-const moreProjectBtn = document.getElementById("gallery__button");
 
 /* Show more project button */
 
@@ -85,3 +82,53 @@ function unActiveGallerySec() {
 function showActiveGallerySec(btnGalleryIndex) {
   arrGallerySec[btnGalleryIndex].setAttribute("style", "display:flex;");
 }
+
+/* Get more project button */
+
+const moreProjectBtn = document.getElementById("gallery__button");
+const rewindGalleryBtn = document.getElementById("gallery__button--rewind");
+
+function displayGallerySec() {
+  arrGallerySec.forEach((section, index) => {
+    if (section.style.display === "flex") {
+    } else {
+      section.setAttribute("style", "display: flex;");
+    }
+  });
+}
+
+function setDisplayGallerySec() {
+  for (let m = 0; m < arrGallerySec.length; m++) {
+    if (gallerySec[m].style.display === "none") {
+      gallerySec[m].setAttribute("style", "display:flex;");
+      break;
+    } else if (gallerySec[arrGallerySec.length - 2].style.display === "flex") {
+      moreProjectBtn.setAttribute("style", "display:none;");
+      rewindGalleryBtn.setAttribute("style", "display: inline-block;");
+      rewindGalleryBtn.addEventListener(
+        "click",
+        function(e) {
+          /* Get offSetTop  project section*/
+          const projectSecTop = document.getElementById("Project").offsetTop;
+          const navHeight = document.getElementById("nav").clientHeight;
+
+          for (let n = 1; n < arrGallerySec.length; n++) {
+            gallerySec[n].setAttribute("style", "display:none;");
+            moreProjectBtn.setAttribute("style", "display:inline-block;");
+            rewindGalleryBtn.setAttribute("style", "display: none;");
+            window.scrollTo(0, projectSecTop - navHeight);
+          }
+        },
+        false
+      );
+    }
+  }
+}
+
+moreProjectBtn.addEventListener(
+  "click",
+  function(e) {
+    setDisplayGallerySec();
+  },
+  false
+);

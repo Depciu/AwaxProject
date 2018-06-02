@@ -434,22 +434,6 @@ section, footer {
 .active-button {
   border-bottom-color: #b88b58; }
 
-.gallery_button {
-  display: none;
-  margin-top: 50px;
-  padding: 16px 48px;
-  border-radius: 30px;
-  background-color: #b88b58;
-  font-size: 0.7058823529rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #ffffff;
-  cursor: pointer; }
-  .gallery_button:hover {
-    background-color: #E5AD6E; }
-  .gallery_button .fa-caret-down {
-    margin-left: 5px; }
-
 /* gallery */
 .gallery {
   text-align: center;
@@ -520,7 +504,7 @@ section, footer {
   font-weight: 300;
   padding-top: 12px; }
 
-#gallery__button {
+#gallery__button, #gallery__button--rewind {
   margin-top: 2%; }
 
 /* Our Team */
@@ -1161,10 +1145,7 @@ footer {
               order: 1; } }
 @media (max-width: 900px) {
   .nav-gallery {
-    display: none; }
-
-  .gallery_button {
-    display: block; } }
+    display: none; } }
 @media (max-width: 935px) {
   .carousel__item {
     -ms-flex-wrap: wrap;
