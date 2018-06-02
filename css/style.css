@@ -163,7 +163,6 @@ section, footer {
   padding: 50px 0 50px 0;
   width: 100vw;
   max-width: 1800px;
-  overflow: scroll;
   overflow-x: hidden; }
 
 .first {
