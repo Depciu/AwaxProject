@@ -22,25 +22,34 @@ var Carousel = function () {
 		value: function scorllInner() {
 			var _this = this;
 
-			var currentMargin = 0;
+			var currentMargin = -1;
+			var lastMargin = -1 * 100 * (this.item - 1);
 			this.interval = setInterval(function () {
-				if (currentMargin < 200) {
-					currentMargin++;
-					_this.inner.style.marginLeft = "-" + currentMargin + "vw";
-				} else {
-					_this.inner.style.marginLeft = 0 + "vw";
-					currentMargin = 0;
-					_this.inner.style.marginLeft = "-" + currentMargin + "vw";
+				currentMargin--;
+				_this.inner.style.marginLeft = currentMargin + "vw";
+				if (currentMargin == lastMargin) {
+					clearInterval(_this.interval);
+					_this.backToStart(lastMargin, currentMargin);
 				}
 			}, this.delay);
+		}
+	}, {
+		key: "backToStart",
+		value: function backToStart(lastMargin, currentMargin) {
+			console.log(lastMargin, currentMargin);
 		}
 	}]);
 
 	return Carousel;
 }();
 
+/* Get carousel wrapper */
+
 var allCarouselWrapper = document.getElementsByClassName("carousel__wrapper");
 var arrCarouselWrapper = [].slice.call(allCarouselWrapper);
+
+/* */
+
 window.addEventListener("load", function (e) {
 	arrCarouselWrapper.forEach(function (carouselWrapper, index) {
 		carouselWrapper[index] = new Carousel({
@@ -49,14 +58,8 @@ window.addEventListener("load", function (e) {
 			inner: carouselWrapper.children[0],
 			item: carouselWrapper.children[0].children.length,
 			bullet: carouselWrapper.children[1],
-			delay: 50
+			delay: 40
 		});
-		if (index == 0) {
-			carouselWrapper[index].delay = 200;
-		}
-		if (index == 1) {
-			carouselWrapper[index].delay = 100;
-		}
 		carouselWrapper[index].scorllInner();
 	});
 }, false);
