@@ -62,6 +62,13 @@ textarea {
 body {
   font-family: "Montserrat", sans-serif; }
 
+button {
+  outline: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
 section, footer {
   max-width: 1800px;
   margin: 0 auto; }
