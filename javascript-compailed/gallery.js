@@ -91,9 +91,9 @@ function displayGallerySec() {
 }
 
 function setDisplayGallerySec() {
-  for (var m = 0; m < arrGallerySec.length; m++) {
-    if (gallerySec[m].style.display === "none") {
-      gallerySec[m].setAttribute("style", "display:flex;");
+  for (var i = 0; i < arrGallerySec.length; i++) {
+    if (gallerySec[i].style.display === "none") {
+      gallerySec[i].setAttribute("style", "display:flex;");
       break;
     } else if (gallerySec[arrGallerySec.length - 2].style.display === "flex") {
       moreProjectBtn.setAttribute("style", "display:none;");
@@ -103,8 +103,8 @@ function setDisplayGallerySec() {
         var projectSecTop = document.getElementById("Project").offsetTop;
         var navHeight = document.getElementById("nav").clientHeight;
 
-        for (var n = 1; n < arrGallerySec.length; n++) {
-          gallerySec[n].setAttribute("style", "display:none;");
+        for (var j = 1; j < arrGallerySec.length; j++) {
+          gallerySec[j].setAttribute("style", "display:none;");
           moreProjectBtn.setAttribute("style", "display:inline-block;");
           rewindGalleryBtn.setAttribute("style", "display: none;");
           window.scrollTo(0, projectSecTop - navHeight);
