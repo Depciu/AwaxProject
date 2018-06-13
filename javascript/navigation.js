@@ -79,18 +79,18 @@ function smoothScroll(winYOffset, secYOffSet, navHeight) {
   const init = setInterval(() => {
     if (j < h) {
       window.scrollTo(0, j);
-      j += 10;
+      j += 35;
       if (j >= h + navHeight) {
         clearInterval(init);
       }
     } else if (j > h) {
       window.scrollTo(0, j);
-      j -= 10;
+      j -= 35;
       if (j <= h) {
         clearInterval(init);
       }
     }
-  }, 5);
+  }, 15);
 }
 
 /* add and remove class  active in navigation */
