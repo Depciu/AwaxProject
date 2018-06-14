@@ -81,7 +81,6 @@ section, footer {
   margin: 0 auto; }
 
 .carousel__wrapper {
-  max-width: 1800px;
   overflow: hidden; }
 
 /* Navigation */
@@ -146,8 +145,7 @@ section, footer {
 
 /* Carousel */
 .carousel__wrapper {
-  position: relative;
-  max-width: 1800px; }
+  position: relative; }
 
 .carousel__inner {
   display: -webkit-box;
@@ -168,7 +166,7 @@ section, footer {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 50px 0 50px 0;
-  width: 100vw;
+  width: 100%;
   max-width: 1800px;
   overflow-x: hidden; }
 
@@ -1214,3 +1212,8 @@ footer {
 
   .product-card {
     margin: 10px; } }
+@media (min-width: 1800px) {
+  #nav {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); } }

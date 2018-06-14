@@ -16,6 +16,7 @@ var Carousel = function () {
     this.backDelay = options.backDelay;
     this.stopDelay = options.stopDelay;
     this.interval = null;
+    this.unit = "vw";
   }
 
   _createClass(Carousel, [{
@@ -41,11 +42,15 @@ var Carousel = function () {
       var allMargins = this.findMargin();
       var lastMargin = allMargins.pop();
 
-      /*Remove and select last index of array allMargins */
+      if (window.innerWidth.toString() > 1780) {
+        this.unit = "%";
+      } else {
+        this.unit = "vw";
+      }
 
       this.interval = setInterval(function () {
         currentMargin -= 10;
-        _this2.inner.style.marginLeft = currentMargin + "vw";
+        _this2.inner.style.marginLeft = "" + (currentMargin + _this2.unit);
 
         allMargins.forEach(function (margin, index) {
 
@@ -81,7 +86,7 @@ var Carousel = function () {
       this.interval = setInterval(function () {
 
         currentMargin += 10;
-        _this3.inner.style.marginLeft = currentMargin + "vw";
+        _this3.inner.style.marginLeft = "" + (currentMargin + _this3.unit);
 
         if (currentMargin == 0) {
           clearInterval(_this3.interval);
@@ -103,7 +108,7 @@ var Carousel = function () {
         if (actualMargin <= futureMargin) {
 
           actualMargin += 10;
-          _this4.inner.style.marginLeft = actualMargin + "vw";
+          _this4.inner.style.marginLeft = "" + (actualMargin + _this4.unit);
 
           if (actualMargin == futureMargin) {
 
@@ -124,7 +129,7 @@ var Carousel = function () {
         } else if (actualMargin >= futureMargin) {
 
           actualMargin -= 10;
-          _this4.inner.style.marginLeft = actualMargin + "vw";
+          _this4.inner.style.marginLeft = "" + (actualMargin + _this4.unit);
 
           if (actualMargin == futureMargin) {
 

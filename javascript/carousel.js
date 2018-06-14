@@ -9,6 +9,7 @@ class Carousel {
     this.backDelay = options.backDelay;
     this.stopDelay = options.stopDelay;
     this.interval = null;
+    this.unit = "vw";
   }
 
   start() {
@@ -26,11 +27,15 @@ class Carousel {
     const allMargins = this.findMargin();
     const lastMargin = allMargins.pop();
 
-    /*Remove and select last index of array allMargins */
+    if (window.innerWidth.toString() > 1780) {
+      this.unit = "%";
+    } else {
+      this.unit = "vw";
+    }
 
     this.interval = setInterval(() => {
       currentMargin -= 10;
-      this.inner.style.marginLeft = `${currentMargin}vw`;
+      this.inner.style.marginLeft = `${currentMargin + this.unit}`;
 
       allMargins.forEach((margin, index) => {
     
@@ -62,7 +67,7 @@ class Carousel {
     this.interval = setInterval(() => {
 
       currentMargin += 10;
-      this.inner.style.marginLeft = `${currentMargin}vw`;
+      this.inner.style.marginLeft = `${currentMargin + this.unit}`;
 
       if (currentMargin == 0) {
         clearInterval(this.interval);
@@ -81,7 +86,7 @@ class Carousel {
       if (actualMargin <= futureMargin) {
 
         actualMargin += 10;
-        this.inner.style.marginLeft = `${actualMargin}vw`;
+        this.inner.style.marginLeft = `${actualMargin + this.unit}`;
 
         if (actualMargin == futureMargin) {
 
@@ -105,7 +110,7 @@ class Carousel {
       } else if (actualMargin >= futureMargin) {
 
         actualMargin -= 10;
-        this.inner.style.marginLeft = `${actualMargin}vw`;
+        this.inner.style.marginLeft = `${actualMargin + this.unit}`;
 
         if (actualMargin == futureMargin) {
 
